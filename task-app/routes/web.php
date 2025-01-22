@@ -40,3 +40,18 @@ Route::delete(
     '/api/v1/tasks/{task}/delete',
     [TaskController::class, 'delete']
 )->name('tasks.delete');
+
+
+Route::patch(
+    '/api/v1/tasks/{task}/toggle',
+    [TaskController::class, 'toggleCompletion']
+)->name('tasks.toggle');
+
+// Route::post(
+//     '/tasks/{task}/update-status',
+//     [TaskController::class, 'updateStatus']
+// )->name('tasks.updateStatus');
+
+// Route::post('/tasks/{task}/update-status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
+
+

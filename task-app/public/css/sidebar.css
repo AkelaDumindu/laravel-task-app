@@ -85,13 +85,13 @@ a.sidebar-link {
     padding: .625rem 1.625rem;
     color: #FFF;
     display: block;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     white-space: nowrap;
     border-left: 3px solid transparent;
 }
 
 .sidebar-link i {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     margin-right: .75rem;
 }
 
@@ -102,6 +102,7 @@ a.sidebar-link:hover {
 
 .sidebar-item {
     position: relative;
+    margin: 25px 0;
 }
 
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
@@ -143,3 +144,26 @@ a.sidebar-link:hover {
 .header-title{
     font-size: 4rem;
 }
+
+
+
+/* Style for larger and more visible checkboxes */
+.custom-checkbox {
+    width: 25px;
+    height: 25px;
+    accent-color: #28a745; /* Green accent for completed tasks */
+    cursor: pointer;
+    transform: scale(1.5); /* Increase size */
+}
+
+/* Highlight label based on task status */
+.form-check-label.text-success {
+    color: #28a745; /* Bright green for completed */
+    font-weight: bold;
+}
+
+.form-check-label.text-secondary {
+    color: #6c757d; /* Gray for pending */
+    font-weight: bold;
+}
+

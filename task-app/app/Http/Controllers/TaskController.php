@@ -15,19 +15,27 @@ class TaskController extends Controller
     public function task(Request $request)
     {
         $filter = $request->query('filter', 'all');
+        $search = $request->query('search', '');
+
+        $query = Task::query();
 
         if ($filter === 'completed') {
-            $tasks = Task::where('is_completed', true)->get();
+            $query->where('is_completed', true);
         } elseif ($filter === 'pending') {
-            $tasks = Task::where('is_completed', false)->get();
-        } else {
-            $tasks = Task::all();
+            $query->where('is_completed', false);
         }
+
+        if ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        }
+
+        $tasks = $query->get();
 
         return view('tasks.task', [
             'tasks' => $tasks,
         ]);
     }
+
 
 
 
@@ -80,4 +88,16 @@ class TaskController extends Controller
         $task->delete();
         return redirect(route('tasks.task'))->with('success', 'Customer deleted successfully.');
     }
+
+
+    public function toggleCompletion(Task $task)
+    {
+        $task->is_completed = !$task->is_completed;
+        $task->save();
+
+        return redirect()->route('tasks.task')->with('success', 'Task status updated successfully.');
+    }
+
+
+
 }

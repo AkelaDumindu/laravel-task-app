@@ -26,19 +26,19 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="{{ route('home') }}" class="sidebar-link">
-                        <i class="lni lni-user"></i>
+                        <i class="lni lni-home"></i>
                         <span>Home</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ route('tasks.new') }}" class="sidebar-link">
-                        <i class="lni lni-agenda"></i>
+                        <i class="lni lni-plus"></i>
                         <span>Add Task</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ route('tasks.allTask') }}" class="sidebar-link">
-                        <i class="lni lni-cog"></i>
+                        <i class="lni lni-direction"></i>
                         <span>My All Tasks</span>
                     </a>
                 </li>

@@ -6,7 +6,11 @@
 <form method="post" action="{{ route('tasks.add') }}">
     @csrf
     <div class="outer" style="margin: 50px 0;">
+
         <div class="container">
+            <h1 class="text- fw-bold fs-2 text-danger">
+                Add New Task
+            </h1>
             <div class="row">
                 <div class="col-12 mb-3">
                     <div class="form-group">

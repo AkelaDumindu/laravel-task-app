@@ -25,6 +25,15 @@
         </a>
     </div>
 
+    <!-- Search Bar -->
+    <div class="mb-4">
+        <form action="{{ route('tasks.index') }}" method="GET" class="d-flex justify-content-center">
+            <input type="text" name="search" class="form-control me-2" placeholder="Search by title"
+                value="{{ request('search') }}" style="max-width: 300px;">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
     <!-- Display Tasks -->
     <div class="row">
         @forelse($tasks as $task)
@@ -33,15 +42,34 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ $task->title }}</h3>
                         <p class="card-text">{{ $task->description }}</p>
-                        <div>
-                            <a href="{{ route('tasks.modify', ['task' => $task->id]) }}"
-                                class="btn btn-warning btn-sm">Update</a>
-                            <form action="{{ route('tasks.delete', ['task' => $task->id]) }}" method="POST"
-                                style="display: inline;"
-                                onsubmit="return confirm('Are you sure you want to delete this task?');">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Left side: Update and Delete Buttons -->
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('tasks.modify', ['task' => $task->id]) }}"
+                                    class="btn btn-warning btn-sm">Update</a>
+                                <form action="{{ route('tasks.delete', ['task' => $task->id]) }}" method="POST"
+                                    style="display: inline;"
+                                    onsubmit="return confirm('Are you sure you want to delete this task?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+
+                            <!-- Right side: Completion Checkbox -->
+                            <form action="{{ route('tasks.toggle', ['task' => $task->id]) }}" method="POST"
+                                style="display: inline;">
                                 @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                @method('PATCH')
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input me-2" type="checkbox" id="task-{{ $task->id }}"
+                                        onchange="this.form.submit()" {{ $task->is_completed ? 'checked' : '' }}
+                                        style="cursor: pointer;">
+                                    <label class="form-check-label fw-bold mb-0" for="task-{{ $task->id }}"
+                                        style="color: {{ $task->is_completed ? 'green' : 'yellow' }};">
+                                        {{ $task->is_completed ? 'Completed' : 'Pending' }}
+                                    </label>
+                                </div>
                             </form>
                         </div>
                     </div>
