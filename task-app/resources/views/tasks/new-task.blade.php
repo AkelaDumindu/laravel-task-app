@@ -1,8 +1,8 @@
-@extends('layouts.app') <!-- Extend the master layout -->
+@extends('layouts.app') 
 
-@section('title', 'New Task') <!-- Set the page title -->
+@section('title', 'New Task') >
 
-@section('content') <!-- Define the content for this page -->
+@section('content') 
 <form method="post" action="{{ route('tasks.add') }}">
     @csrf
     <div class="outer" style="margin: 50px 0;">

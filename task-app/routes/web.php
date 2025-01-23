@@ -36,6 +36,7 @@ Route::put(
     [TaskController::class, 'update']
 )->name('tasks.update');
 
+
 Route::delete(
     '/api/v1/tasks/{task}/delete',
     [TaskController::class, 'delete']

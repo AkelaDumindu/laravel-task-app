@@ -4,28 +4,27 @@
 
 @section('content')
 
-<form method="post" action="{{route('tasks.update', ['task' => $task])}}">
+<form method="post" action="{{ route('tasks.update', ['task' => $task]) }}">
     @csrf
     @method('put')
     <div class="outer" style="margin: 50px 0;">
         <div class="container">
-
             <h1 class="text- fw-bold fs-2 text-danger">
                 Update Task
             </h1>
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="name">Title</label>
-                        <input class="form-control" type="text" name="name" id="name" value="{{$task->title}}">
+                        <label for="title">Title</label>
+                        <input class="form-control" type="text" name="title" id="title" value="{{ $task->title }}">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="name">Description</label>
-                        <input class="form-control" type="text" placeholder="Galle" name="address" id="address"
-                            value="{{$task->description}}">
+                        <label for="description">Description</label>
+                        <input class="form-control" type="text" name="description" id="description"
+                            value="{{ $task->description }}">
                     </div>
                 </div>
 
@@ -39,11 +38,5 @@
         </div>
     </div>
 </form>
-
-</div>
-
-
-
-</div>
 
 @endsection

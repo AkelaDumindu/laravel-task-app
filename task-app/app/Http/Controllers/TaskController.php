@@ -80,8 +80,8 @@ class TaskController extends Controller
 
         $task->update($createdTask);
         return redirect(route('tasks.task'));
-
     }
+
 
     public function delete(Task $task)
     {
